@@ -3,8 +3,11 @@ package com.tmtc.view.modules.splash
 import android.content.Intent
 import android.os.Handler
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import com.dpoints.dpointsmerchant.view.commons.base.BaseActivity
 import com.tmtc.R
+import com.tmtc.view.modules.Login
 import com.tmtc.view.modules.dashboard.Dashboard
 
 class OnBoardingActivity : BaseActivity() {
@@ -15,8 +18,9 @@ class OnBoardingActivity : BaseActivity() {
     override fun init() {
         handler = Handler()
         runnable = Runnable {
-            val intent = Intent(this@OnBoardingActivity, Dashboard::class.java)
+            val intent = Intent(this@OnBoardingActivity, Login::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

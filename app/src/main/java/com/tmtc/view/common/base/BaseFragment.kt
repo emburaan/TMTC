@@ -75,7 +75,7 @@ abstract class BaseFragment : Fragment() {
     ) {
         val snackBar = Snackbar.make(view, message, Snackbar.LENGTH_LONG)
         val snackBarView = snackBar.view
-        snackBarView.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorError))
+        snackBarView.setBackgroundColor(ContextCompat.getColor(context!!, R.color.red_dark))
         val textView =
             snackBarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
         textView.setTextColor(ContextCompat.getColor(context!!, R.color.white))
@@ -86,7 +86,7 @@ abstract class BaseFragment : Fragment() {
         Log.e("FALIURE", "ON")
         val snackBar = Snackbar.make(view, message, Snackbar.LENGTH_LONG)
         val snackBarView = snackBar.view
-        snackBarView.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorError))
+        snackBarView.setBackgroundColor(ContextCompat.getColor(context!!, R.color.red_dark))
         val textView =
             snackBarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
         textView.setTextColor(ContextCompat.getColor(context!!, R.color.white))
@@ -97,7 +97,7 @@ abstract class BaseFragment : Fragment() {
         Log.e("SUCCESS", "ON")
         val snackBar = Snackbar.make(view, message, Snackbar.LENGTH_LONG)
         val snackBarView = snackBar.view
-        snackBarView.setBackgroundColor(ContextCompat.getColor(context!!, R.color.green))
+        snackBarView.setBackgroundColor(ContextCompat.getColor(context!!, R.color.blue_black_light))
         val textView =
             snackBarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
         textView.setTextColor(ContextCompat.getColor(context!!, R.color.white))

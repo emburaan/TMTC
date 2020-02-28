@@ -1,42 +1,30 @@
 <resources>
 
     <!-- Base application theme. -->
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColor">@color/textColor</item>
-<!--
-        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
--->
     </style>
 
 
-    <style name="OtpWidget.OtpView" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@null</item>
-        <item name="android:minHeight">0dp</item>
-        <item name="android:maxLines">1</item>
+    <style name="Normal_Margin_Style" parent="AppTheme">
+        <item name="android:layout_marginRight">@dimen/margin_right_16</item>
+        <item name="android:layout_marginLeft">@dimen/margin_left_16</item>
+        <item name="android:layout_marginTop">@dimen/margin_top_8</item>
+        <item name="android:layout_marginBottom">@dimen/margin_bottom_8</item>
     </style>
 
-    <style name="underline">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0.2dp</item>
-        <item name="android:layout_marginTop">@dimen/dimen_4</item>
-        <item name="android:layout_marginBottom">@dimen/dimen_4</item>
-        <item name="android:background">@color/color_line</item>
+    <style name="Font_family_light" parent="AppTheme">
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
-    <style name="AlertDialogStyle" parent="Base.Theme.MaterialComponents.Light.Dialog.Alert">
-        <!-- Used for the buttons -->
-        <item name="colorAccent">@color/textColor</item>
-        <item name="android:windowTitleStyle">@style/TextTitleStyle</item>
+
+    <style name="Font_family_regular" parent="AppTheme">
+        <item name="android:fontFamily">sans-serif-regular</item>
     </style>
-    <style name="TextTitleStyle">
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
-    </style>
-    <style name="AppTheme.Text.Small" parent="TextAppearance.AppCompat.Small">
-    </style>
+
 
 </resources>
