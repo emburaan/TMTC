@@ -1,163 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:background="@color/colorPrimaryLight"
+    tools:context=".view.modules.login.LoginActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
+    </LinearLayout>
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_150"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_marthoma"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="SIGN IN"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-
-        <ImageView
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:layout_margin="@dimen/dimen_30"
+        app:cardCornerRadius="@dimen/dimen_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="@dimen/dimen_20"
+        app:layout_constraintTop_toBottomOf="@+id/textView" >
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/back"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY">
 
-        </ImageView>
+            android:background="@drawable/dashboard_bg_gradient">
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/avi"
+                style="@style/AVLoadingIndicatorView"
+                android:layout_width="@dimen/dimen_120"
+                android:layout_height="@dimen/dimen_120"
+                android:visibility="visible"
+                app:indicatorColor="#1332E1"
+                app:indicatorName="BallScaleMultipleIndicator"
+                app:layout_constraintBottom_toBottomOf="@+id/circularImageView"
+                app:layout_constraintEnd_toEndOf="@+id/circularImageView"
+                app:layout_constraintStart_toStartOf="@+id/circularImageView"
+                app:layout_constraintTop_toTopOf="@+id/circularImageView" />
 
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/circularImageView"
+                android:layout_width="@dimen/dimen_80"
+                android:layout_height="@dimen/dimen_80"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_god"
+                app:civ_border_color="#3f51b5"
+                app:civ_border_width="2dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="#3f51b5"
+                app:civ_shadow_radius="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha=".4"
-            android:background="@drawable/background_fade">
-
-        </FrameLayout>
-
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_above="@+id/scrollview_login"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
-            android:src="@drawable/ic_marthoma" />
-
-
-        <ScrollView
-            android:id="@+id/scrollview_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_phone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_left_16"
-                android:layout_marginRight="@dimen/margin_right_16"
-                android:layout_marginTop="@dimen/margin_top_16"
-                android:layout_marginBottom="@dimen/margin_bottom_16"
-                android:orientation="vertical">
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:hint="Phone Number"
+                android:textColorHint="@color/colorPrimary"
+                app:boxCornerRadiusBottomEnd="@dimen/dimen_8"
+                app:boxCornerRadiusBottomStart="@dimen/dimen_8"
+                app:boxCornerRadiusTopEnd="@dimen/dimen_8"
+                app:boxCornerRadiusTopStart="@dimen/dimen_8"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:elevation="@dimen/dimen_8"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/avi">
 
-                <EditText
-                    android:id="@+id/reg_name_et"
-                    style="@style/Font_family_light"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_phone"
+                    style="@style/AppTheme.Text.Small"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edit_style"
-                    android:drawableLeft="@drawable/ic_person"
-                    android:drawablePadding="@dimen/padding_16"
-                    android:hint="User Name"
-                    android:layout_marginTop="@dimen/margin_top_8"
-                    android:layout_marginBottom="@dimen/margin_top_8"
-                    android:layout_marginLeft="@dimen/margin_right_16"
-                    android:layout_marginRight="@dimen/margin_right_16"
-                    android:inputType="text"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:padding="@dimen/padding_8"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textSize="@dimen/text_20" />
+                    android:layout_height="match_parent"
+                    android:digits="1234567890"
+                    android:background="@drawable/login_et"
+                    android:inputType="phone"
+                    android:textColor="#222222"
 
+                    android:textColorHint="@color/grey_300" />
 
-                <EditText
-                    android:id="@+id/reg_password_et"
-                    style="@style/Font_family_light"
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_pass"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:hint="Password"
+                android:textColorHint="@color/colorPrimary"
+                app:boxCornerRadiusBottomEnd="@dimen/dimen_8"
+                app:boxCornerRadiusBottomStart="@dimen/dimen_8"
+                app:boxCornerRadiusTopEnd="@dimen/dimen_8"
+                app:boxCornerRadiusTopStart="@dimen/dimen_8"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:elevation="@dimen/dimen_8"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_pass"
+                    style="@style/AppTheme.Text.Small"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/password"
-                    android:drawablePadding="@dimen/padding_16"
-                    android:background="@drawable/edit_style"
-                    android:hint="Password"
-                    android:layout_marginTop="@dimen/margin_top_8"
-                    android:layout_marginBottom="@dimen/margin_top_8"
-                    android:layout_marginLeft="@dimen/margin_right_16"
-                    android:layout_marginRight="@dimen/margin_right_16"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/login_et"
                     android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:padding="@dimen/padding_8"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textSize="@dimen/text_20" />
+
+                    android:textColorHint="@color/grey_300" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/login_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_et"
+                android:text="LOGIN"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:paddingLeft="@dimen/dimen_30"
+                android:paddingRight="@dimen/dimen_30"
+                android:paddingTop="@dimen/dimen_10"
+                android:paddingBottom="@dimen/dimen_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_pass" />
 
 
-                <Button
-                    style="@style/Font_family_regular"
+
+            <!--<com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/login_et"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phone">
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="@dimen/margin_top_8"
-                    android:layout_marginBottom="@dimen/margin_top_8"
-                    android:layout_marginLeft="@dimen/margin_right_16"
-                    android:layout_marginRight="@dimen/margin_right_16"
-                    android:background="@drawable/red_style"
-                    android:text="LOGIN"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_16" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:weightSum="2">
-                <View
-                    android:layout_width="0dp"
-                    android:layout_weight="0.7"
-                    android:layout_height="@dimen/dimen_1"
-                    android:background="@color/white"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.1"
-                        android:layout_margin="4dp"
-                        android:textColor="@color/white"
-                        android:text="or"/>
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_weight="0.7"
-                        android:layout_height="@dimen/dimen_1"
-                        android:background="@color/white"/>
-
-                </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Skip for now"
-                    android:gravity="center"
-                    android:textColor="@color/white"/>
-                </LinearLayout>
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>-->
 
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
-
-
-            </LinearLayout>
-
-        </ScrollView>
-
-    </RelativeLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

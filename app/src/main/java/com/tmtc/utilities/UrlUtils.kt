@@ -6,7 +6,7 @@ package com.dpoints.dpointsmerchant.utilities
  */
 
 private const val LOCAL_URL = "http://192.168.0.114:9000"
-private const val STAGING_URL = "https://dpoints.enthralingmatrix.com/api/"
+private const val STAGING_URL = "http://192.168.0.109:8080/trinity/"
 
 const val BASE_URL = STAGING_URL
 

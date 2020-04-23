@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:gravity="top"
+    android:weightSum="2">
+    <ImageView
+        android:id="@+id/toolbar_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_hamburger"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="@dimen/dimen_15"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_weight="0.1"
+        />
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_height="@dimen/dimen_50"
+        android:layout_weight="1.8"/>
+    <ImageView
+        android:id="@+id/img_notification"
+        android:layout_width="0dp"
+        android:padding="@dimen/dimen_30"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        />
+
+</LinearLayout>

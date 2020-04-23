@@ -26,7 +26,7 @@ import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.tmtc.R
-import com.tmtc.view.modules.dashboard.Dashboard
+import com.tmtc.view.modules.dashboard.DashBoardActivity
 
 
 abstract class BaseActivity : AppCompatActivity(){
@@ -144,7 +144,7 @@ abstract class BaseActivity : AppCompatActivity(){
     }*/
 
     fun startDashboardActivity() {
-        startActivity(Intent(this, Dashboard::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+        startActivity(Intent(this, DashBoardActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
         finish()
     }
 

@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">TMTC</string>
     <string name="okay">Okay</string>
+    <string name="dashboard">Dashboard</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_username">please enter you phone number</string>
+    <string name="exceed_length_10">please enter a valid phone number</string>
+    <string name="exceed_pass">password should be atleast 6 to 8characters</string>
 
 </resources>
