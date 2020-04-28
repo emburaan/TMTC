@@ -7,13 +7,16 @@ import com.dpoints.dpointsmerchant.datasource.remote.ApiCallbackImpl
 import com.dpoints.dpointsmerchant.datasource.remote.NetworkState
 import com.dpoints.dpointsmerchant.utilities.Event
 import com.tmtc.datasource.auth1.AuthService
-import com.tmtc.datasource.auth1.LoginModel
-import com.tmtc.datasource.auth1.LoginModel1
+import com.tmtc.datasource.auth1.Data
+import com.tmtc.datasource.auth1.LoginModelAuth
 
 class LoginViewModel:ViewModel() {
 
-    private val _loginState = MutableLiveData<Event<NetworkState<LoginModel>>>()
-    val loginState: LiveData<Event<NetworkState<LoginModel>>> get() = _loginState
+    private val _loginState = MutableLiveData<Event<NetworkState<LoginModelAuth>>>()
+    val loginState: LiveData<Event<NetworkState<LoginModelAuth>>> get() = _loginState
+
+    private val _registerState = MutableLiveData<Event<NetworkState<Data>>>()
+    val registerState: LiveData<Event<NetworkState<Data>>> get() = _registerState
 
 
 
@@ -27,11 +30,13 @@ class LoginViewModel:ViewModel() {
         AuthService.instance.login(
             phone,
             password,
-            object : ApiCallbackImpl<LoginModel>(_loginState) {
-                override fun onSuccess(success: LoginModel?) {
+            object : ApiCallbackImpl<LoginModelAuth>(_loginState) {
+                override fun onSuccess(success: LoginModelAuth?) {
                    // Log.e("Data",success?.message)
                     _loginState.value = Event(NetworkState.Success(success))
                 }
             })
     }
+
+
 }

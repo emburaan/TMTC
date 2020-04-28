@@ -1,10 +1,7 @@
 package com.tmtc.view.modules.dashboard
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -15,12 +12,11 @@ import com.dpoints.dpointsmerchant.view.commons.base.BaseFragment
 import com.tmtc.R
 import com.tmtc.datasource.model.Item
 import com.tmtc.datasource.model.ItemDashboardImage
+import com.tmtc.utilities.FragmentHelper
 import com.tmtc.view.adapter.DashboardContentAdapter
 import com.tmtc.view.adapter.ImageAdapter
-import com.tmtc.view.adapter.NavigationAdapter
-import kotlinx.android.synthetic.main.activity_dash_board.*
+import com.tmtc.view.modules.login.LoginFragment
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.toolbar_main.*
 
 /**
  * A simple [Fragment] subclass.
@@ -34,6 +30,17 @@ class HomeFragment : BaseFragment(),OnItemClickListener {
         rv_content.adapter= DashboardContentAdapter(getContent(),this)
         val snapHelper: SnapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(rv_image_dashboard)
+
+
+        login_btn.setOnClickListener {
+    FragmentHelper.addFragmentSlideRightEnterToExit(
+        LoginFragment(),
+        activity!!,
+        R.id.container,
+        "Login"
+    )
+}
+
 
     }
     private fun getContent() = listOf(
@@ -60,6 +67,7 @@ class HomeFragment : BaseFragment(),OnItemClickListener {
 
 
     )
+
 
     override fun onItemClick(index: Int, adapter: Int) {
 

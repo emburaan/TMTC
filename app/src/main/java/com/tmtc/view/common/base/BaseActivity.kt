@@ -1,10 +1,9 @@
 package com.dpoints.dpointsmerchant.view.commons.base
 
-import android.app.Activity
-import android.app.NotificationManager
-import android.app.ProgressDialog
+import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.os.Bundle
@@ -26,15 +25,17 @@ import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.tmtc.R
+import com.tmtc.view.common.dialog.ResponseDialog
 import com.tmtc.view.modules.dashboard.DashBoardActivity
+import com.wang.avi.AVLoadingIndicatorView
+import kotlinx.android.synthetic.main.dialog_demo.*
 
 
 abstract class BaseActivity : AppCompatActivity(){
 
     abstract val layout: Int @LayoutRes get
     abstract fun init()
-    lateinit var progressDialog:ProgressDialog
-
+    lateinit var progressDialog:Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout)
@@ -44,20 +45,31 @@ abstract class BaseActivity : AppCompatActivity(){
     }
 
     open fun showProgress(context:Context) {
+        progressDialog = Dialog(context)
+        val dialogView = layoutInflater.inflate(R.layout.dialog_demo, null)
+        progressDialog.setContentView(dialogView)
 
-            progressDialog =
+        val progressbar =  dialogView.findViewById<AVLoadingIndicatorView>(R.id.progress)
+        progressbar.smoothToShow()
+        progressDialog.window!!.setBackgroundDrawableResource(R.color.transparent)
+        progressDialog.setCancelable(false)
+        progressDialog.show()
+
+
+           /* progressDialog =
                 ProgressDialog.show(context, "Please wait...", "Processing Data...", false, false)
-
+*/
     }
 
-    open fun hideProgress() {
+     fun hideProgress() {
         Log.e("initialized", "" + ::progressDialog.isInitialized)
             when {
                 (::progressDialog.isInitialized) -> {
                     progressDialog.dismiss()
+
                 }
             }
-    }
+             }
 
 
     fun onFailure(message: CharSequence, view: View = findViewById(R.id.root_view)) {
@@ -79,13 +91,16 @@ abstract class BaseActivity : AppCompatActivity(){
         btnText: String = getString(R.string.okay),
         view: View = findViewById(R.id.root_view)
     ) {
-        val snackBar = Snackbar.make(view, message, Snackbar.LENGTH_LONG)
-        val snackBarView = snackBar.view
-        snackBarView.setBackgroundColor(ContextCompat.getColor(this, R.color.red_dark))
-        val textView =
-            snackBarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-        textView.setTextColor(ContextCompat.getColor(this, R.color.white))
-        snackBar.show()
+        Log.e("Error", "ON")
+
+        ResponseDialog.Builder()
+            .message(message)
+            .attachActionBlock(clickListener)
+            .icon(icon)
+            .isCancellable(cancellable)
+            .btnText(btnText)
+            .build()
+            .show(supportFragmentManager, "")
     }
 
     open fun onFailure(view: View, message: CharSequence) {

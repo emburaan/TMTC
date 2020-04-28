@@ -1,38 +1,48 @@
 package com.tmtc.view.modules.login
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.dpoints.dpointsmerchant.datasource.remote.NetworkState
+import com.dpoints.dpointsmerchant.preferences.UserPreferences
 import com.dpoints.dpointsmerchant.utilities.clearErrorMessage
 import com.dpoints.dpointsmerchant.utilities.getVM
 import com.dpoints.dpointsmerchant.utilities.onTextChanged
-import com.dpoints.dpointsmerchant.view.commons.base.BaseActivity
+import com.dpoints.dpointsmerchant.view.commons.base.BaseFragment
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.iid.InstanceIdResult
 import com.tmtc.R
-import com.tmtc.datasource.auth1.LoginModel1
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : BaseActivity() {
+class LoginFragment : BaseFragment() {
     override val layout: Int = R.layout.activity_login
-    private val viewModel by lazy { getVM<LoginViewModel>(this) }
-    override fun init() {
-
+    override fun init(view: View) {
         login_btn.setOnClickListener {
             if (validation()) {
                 viewModel.login(et_phone.text.toString(), et_pass.text.toString())
             }
         }
 
+
         et_phone.onTextChanged { _, _, _, _ -> til_phone.clearErrorMessage() }
         et_pass.onTextChanged { _, _, _, _ -> til_pass.clearErrorMessage() }
         avi.smoothToShow()
 
         addObserver()
-
     }
 
+    private val viewModel by lazy { getVM<LoginViewModel>(activity!!) }
+
+    var token:String = ""
+    private fun getFirebseToken():String{
+
+        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener(activity!!){ instanceIdResult: InstanceIdResult ->
+            token = instanceIdResult.token
+            Log.e("FirebaseToken", token)
+        }
+        return token
+    }
 
 
 
@@ -63,24 +73,27 @@ class LoginActivity : BaseActivity() {
             Log.d("state",state.toString())
 
             if (state is NetworkState.Loading) {
-                return@Observer showProgress(this)
+                return@Observer showProgress(activity!!)
             }
 
             hideProgress()
 
             when (state) {
                 is NetworkState.Success -> {
-                  if (state.data!!.message.contains("Invalid Phone No. or Password")){
-                      onError(state.data.message)
-                  }else{
-                      onSuccess(state.data.message)
-                  }
+                    if (state.data!!.message.contains("Invalid PhoneNo or Password."))
+                    {
+                        onError(state.data.message)
+                    }else{
+                        UserPreferences.instance.saveUser(context!!,state.data.data!!)
+                        getFragmentManager()!!.popBackStack();
+                        Toast.makeText(context,state.data.message, Toast.LENGTH_LONG).show()
+                    }
 
                 }
-                is NetworkState.Error -> Toast.makeText(this,"loged error",Toast.LENGTH_SHORT).show()
-                is NetworkState.Failure -> Toast.makeText(this,"loged failure",Toast.LENGTH_SHORT).show()
+                is NetworkState.Error -> onError(state.message)
+                is NetworkState.Failure -> onFailure(getString(R.string.request_error))
 
-                else -> Log.d("failure","failure")
+                else -> onFailure(getString(R.string.connection_error))
             }
         })
     }

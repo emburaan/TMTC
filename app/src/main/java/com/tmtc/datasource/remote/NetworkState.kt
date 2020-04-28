@@ -4,6 +4,7 @@ sealed class NetworkState<out T> {
     class Loading<out T> : NetworkState<T>()
     data class Success<out T>(
         val data: T? = null
+
     ) : NetworkState<T>()
     data class Error<out T>(
         val message: String,

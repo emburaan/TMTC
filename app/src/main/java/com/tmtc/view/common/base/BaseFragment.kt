@@ -1,5 +1,6 @@
 package com.dpoints.dpointsmerchant.view.commons.base
 
+import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
@@ -14,13 +15,15 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.tmtc.R
+import com.tmtc.view.common.dialog.ResponseDialog
+import com.wang.avi.AVLoadingIndicatorView
 
 
 abstract class BaseFragment : Fragment() {
 
     protected var baseActivity: BaseActivity? = null
     abstract val layout: Int @LayoutRes get
-    lateinit var progressDialog: ProgressDialog
+    lateinit var progressDialog: Dialog
     abstract fun init(view: View)
  var myView :View ?= null
     override fun onAttach(context: Context) {
@@ -46,8 +49,15 @@ abstract class BaseFragment : Fragment() {
         super.onDetach()
     }
     open fun showProgress(context:Context) {
-        progressDialog = ProgressDialog.show(context, "Please wait...", "Processing Shop...", false, false)
-    }
+        progressDialog = Dialog(context)
+        val dialogView = layoutInflater.inflate(R.layout.dialog_demo, null)
+        progressDialog.setContentView(dialogView)
+
+        val progressbar =  dialogView.findViewById<AVLoadingIndicatorView>(R.id.progress)
+        progressbar.smoothToShow()
+        progressDialog.window!!.setBackgroundDrawableResource(R.color.transparent)
+        progressDialog.setCancelable(false)
+        progressDialog.show()    }
 
     open fun hideProgress() {
         progressDialog.dismiss()
@@ -73,13 +83,16 @@ abstract class BaseFragment : Fragment() {
         btnText: String = getString(R.string.okay),
         view: View = myView!!.findViewById(R.id.root_view)
     ) {
-        val snackBar = Snackbar.make(view, message, Snackbar.LENGTH_LONG)
-        val snackBarView = snackBar.view
-        snackBarView.setBackgroundColor(ContextCompat.getColor(context!!, R.color.red_dark))
-        val textView =
-            snackBarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-        textView.setTextColor(ContextCompat.getColor(context!!, R.color.white))
-        snackBar.show()
+        Log.e("Error", "ON")
+
+        ResponseDialog.Builder()
+            .message(message)
+            .attachActionBlock(clickListener)
+            .icon(icon)
+            .isCancellable(cancellable)
+            .btnText(btnText)
+            .build()
+            .show(activity!!.supportFragmentManager, "")
     }
 
     open fun onFailure(view: View, message: CharSequence) {

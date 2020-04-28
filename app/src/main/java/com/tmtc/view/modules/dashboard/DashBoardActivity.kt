@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 
 import com.dpoints.dpointsmerchant.view.commons.base.BaseActivity
 import com.tmtc.R
+import com.tmtc.utilities.FragmentHelper
 
 import kotlinx.android.synthetic.main.activity_dash_board.*
 import kotlinx.android.synthetic.main.toolbar_main.*
@@ -15,18 +16,10 @@ class DashBoardActivity :BaseActivity() {
     override val layout=R.layout.activity_dash_board
 
     override fun init() {
-        toolbar_back.setImageResource(R.drawable.ic_hamburger)
-        toolbar_back.visibility=View.INVISIBLE
-        toolbar.visibility=View.INVISIBLE
-        toolbar_title.setText(getString(R.string.dashboard))
-        applyChanges(HomeFragment(),"Home")
+FragmentHelper.replaceFragmentSlideRightEnter(HomeFragment(),this,R.id.container,"Home")
     }
 
-    fun applyChanges(fr:Fragment,tag:String) {
-        supportFragmentManager.beginTransaction().add(R.id.container,fr).commit()
 
-
-    }
 
 
 }

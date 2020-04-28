@@ -19,9 +19,12 @@ class SplashActivity : AppCompatActivity() {
         splash_logo.animate().scaleX(0.8F).duration = 1800
        Handler().postDelayed({
            startActivity(Intent(this,DashBoardActivity::class.java))
+           overridePendingTransition(0, 0);
+           finish()
 
        },1800
 
        )
     }
+
 }

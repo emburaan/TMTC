@@ -73,6 +73,22 @@
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_marginStart="@dimen/dimen_15"/>
+                <TextView
+                    android:id="@+id/login_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login"
+                    android:textColor="@color/white"
+                    android:paddingStart="@dimen/dimen_10"
+                    android:paddingEnd="@dimen/dimen_10"
+                    android:paddingTop="@dimen/dimen_4"
+                    android:paddingBottom="@dimen/dimen_4"
+                    android:background="@drawable/bg_login_btn"
+                    android:drawablePadding="@dimen/dimen_4"
+                    android:drawableStart="@drawable/ic_login"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:layout_marginTop="@dimen/dimen_10"/>
+
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_content"
@@ -80,6 +96,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/dimen_15"
                 android:padding="@dimen/dimen_30"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/dimen_30"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="3"/>
