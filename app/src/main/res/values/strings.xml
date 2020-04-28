@@ -12,5 +12,6 @@
     <string name="request_error">Sorry! We are unable to process your request. Please try after some time.</string>
     <string name="connection_error">Failed to connect. Make sure you have an active internet connection.</string>
     <string name="login">Login</string>
+    <string name="dumy_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</string>
 
 </resources>

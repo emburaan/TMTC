@@ -59,7 +59,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trrinity"
+                android:text="Trinity"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -94,10 +94,8 @@
                 android:id="@+id/rv_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/dimen_15"
-                android:padding="@dimen/dimen_30"
-                android:visibility="gone"
-                android:layout_marginTop="@dimen/dimen_30"
+                android:padding="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_10"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="3"/>
         </LinearLayout>

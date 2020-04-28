@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.dpoints.dpointsmerchant.utilities.OnItemClickListener
 import com.tmtc.R
@@ -17,11 +19,13 @@ class DashboardContentAdapter(
     class ViewHolder(view: View):RecyclerView.ViewHolder(view) {
         val image:ImageView = view.findViewById<ImageView>(R.id.img_content)
         val name:TextView =view.findViewById(R.id.tv_content)
+        val bg:CardView=view.findViewById(R.id.content_card)
         val bindView = view
 
         fun bindto(item: Item) {
             image.setImageResource(item.iconRes!!)
             name.text=item.name
+            bg.setBackgroundResource(item.background!!)
 
         }
 

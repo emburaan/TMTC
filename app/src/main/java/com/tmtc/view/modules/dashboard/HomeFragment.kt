@@ -15,6 +15,7 @@ import com.tmtc.datasource.model.ItemDashboardImage
 import com.tmtc.utilities.FragmentHelper
 import com.tmtc.view.adapter.DashboardContentAdapter
 import com.tmtc.view.adapter.ImageAdapter
+import com.tmtc.view.modules.vicar.VicarsFragment
 import com.tmtc.view.modules.login.LoginFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -44,10 +45,10 @@ class HomeFragment : BaseFragment(),OnItemClickListener {
 
     }
     private fun getContent() = listOf(
-        Item("Presedential Info/ \nOld Vicars",R.drawable.ic_priest),
-        Item("BirthDays/ \n Wedding ",R.drawable.ic_cake),
-        Item("Edavka Deepam",R.drawable.ic_prayer),
-        Item("Parish directory",R.drawable.ic_directory)
+        Item("President \nOld Vicars",R.drawable.ic_priest,R.drawable.blue_bg_gradient),
+        Item("BirthDays/\n Wedding ",R.drawable.ic_cake,R.drawable.blue_bg_gradient),
+        Item("Edavka\n Deepam",R.drawable.ic_prayer,R.drawable.blue_bg_gradient),
+        Item("Parish\ndirectory",R.drawable.ic_directory,R.drawable.blue_bg_gradient)
 
 
     )
@@ -70,6 +71,10 @@ class HomeFragment : BaseFragment(),OnItemClickListener {
 
 
     override fun onItemClick(index: Int, adapter: Int) {
+        when (getContent()[index].name){
+            "President \n" +
+                    "Old Vicars"->FragmentHelper.addFragmentSlideRightEnterToExit(VicarsFragment(),activity!!,R.id.container,"President")
+        }
 
     }
 

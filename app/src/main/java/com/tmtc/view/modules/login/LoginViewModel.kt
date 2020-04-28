@@ -22,7 +22,8 @@ class LoginViewModel:ViewModel() {
 
     fun login(
         phone: String,
-        password: String
+        password: String,
+        deviceid:String
     ) {
 
         _loginState.value = Event(NetworkState.Loading())
@@ -30,6 +31,7 @@ class LoginViewModel:ViewModel() {
         AuthService.instance.login(
             phone,
             password,
+            deviceid,
             object : ApiCallbackImpl<LoginModelAuth>(_loginState) {
                 override fun onSuccess(success: LoginModelAuth?) {
                    // Log.e("Data",success?.message)

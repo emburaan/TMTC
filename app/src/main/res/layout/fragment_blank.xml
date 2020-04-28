@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.modules.vicar.VicarsFragment">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_300"
+                android:background="@drawable/curved_buttom_bg"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_30"
+                    android:layout_marginEnd="@dimen/dimen_30"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    >
+                    <com.mikhaellopez.circularimageview.CircularImageView
+                        android:layout_width="@dimen/dimen_100"
+                        android:layout_height="@dimen/dimen_100"
+                        android:adjustViewBounds="true"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/dimen_10"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:src="@drawable/allan_achen"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_20"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:text="Allan T Samuel"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/dimen_20"
+                    android:text="@string/dumy_text"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Our Former Vicars"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_20"
+                android:layout_margin="@dimen/dimen_20"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_vicar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</LinearLayout>

@@ -78,6 +78,10 @@
     <dimen name="card_radius">12dp</dimen>
     <dimen name="dimen_4">4dp</dimen>
     <dimen name="dimen_2">2dp</dimen>
+    <dimen name="text_10">10sp</dimen>
+    <dimen name="dimen_25">25dp</dimen>
+    <dimen name="dimen_400">400dp</dimen>
+    <dimen name="dimen_350">350dp</dimen>
     <!--
         bottom_navigation_elevation
         bottom_navigation_height

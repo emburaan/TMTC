@@ -17,10 +17,22 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginFragment : BaseFragment() {
     override val layout: Int = R.layout.activity_login
+    private val viewModel by lazy { getVM<LoginViewModel>(activity!!) }
+    var token:String=""
+    fun getFirebseToken():String{
+
+        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener(activity!!){ instanceIdResult: InstanceIdResult ->
+            token = instanceIdResult.token
+            Log.e("FirebaseToken", token)
+        }
+        return token
+    }
+
     override fun init(view: View) {
+        getFirebseToken()
         login_btn.setOnClickListener {
             if (validation()) {
-                viewModel.login(et_phone.text.toString(), et_pass.text.toString())
+                viewModel.login(et_phone.text.toString(), et_pass.text.toString(),token)
             }
         }
 
@@ -32,17 +44,8 @@ class LoginFragment : BaseFragment() {
         addObserver()
     }
 
-    private val viewModel by lazy { getVM<LoginViewModel>(activity!!) }
 
-    var token:String = ""
-    private fun getFirebseToken():String{
 
-        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener(activity!!){ instanceIdResult: InstanceIdResult ->
-            token = instanceIdResult.token
-            Log.e("FirebaseToken", token)
-        }
-        return token
-    }
 
 
 

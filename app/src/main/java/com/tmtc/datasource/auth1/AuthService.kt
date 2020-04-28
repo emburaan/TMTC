@@ -17,10 +17,11 @@ class AuthService private constructor(){
     fun login(
         phone:String,
         password:String,
+        deviceid:String,
         callback: ApiCallback<LoginModelAuth>
     ){
         val service = ApiClient.retrofit.create(Servces::class.java)
-        val call = service.login(phone,password)
+        val call = service.login(phone,password,deviceid)
         call.enqueue(CallbackImpl(callback))
     }
 
@@ -33,7 +34,9 @@ interface Servces {
     @FormUrlEncoded
     fun login(
         @Field("phone") phone: String,
-        @Field("password") password: String
+        @Field("password") password: String,
+        @Field("deviceid") deviceid:String
+
     ): Call<ApiResult<LoginModelAuth>>
 
 
