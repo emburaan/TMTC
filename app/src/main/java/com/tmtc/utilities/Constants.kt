@@ -25,3 +25,10 @@ class Action {
         const val ACTION_COIN_TRANSFER = "COIN_TRANSFER"
     }
 }
+class Constants {
+    companion object{
+
+        const val DATA = "data"
+
+    }
+}

@@ -15,6 +15,13 @@
         <activity android:name=".view.modules.dashboard.DashBoardActivity" />
 
         <activity android:name=".view.modules.login.LoginFragment"/>
+        <service
+            android:name=".services.FirebaseMessagingServices"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
         <activity android:name=".view.modules.splash.SplashActivity"
 
         android:theme="@style/Splash" >

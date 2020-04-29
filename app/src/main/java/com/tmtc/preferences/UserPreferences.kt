@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.core.content.edit
 import com.dpoints.dpointsmerchant.utilities.fromJson
 import com.dpoints.dpointsmerchant.utilities.toJson
-import com.tmtc.datasource.auth1.Data
-import com.tmtc.datasource.auth1.LoginModelAuth
+import com.tmtc.datasource.auth1.DataModel
+import com.tmtc.datasource.auth1.RoleModel
 
 
 class UserPreferences {
@@ -13,6 +13,7 @@ class UserPreferences {
     companion object {
         val instance: UserPreferences by lazy { UserPreferences() }
         private const val USER = "USER"
+        private const val ROLE = "ROLE"
         private const val IS_LOGGED_IN = "IS_LOGGED_IN"
         private const val PREFERENCE_NAME = "user.preferences"
         private const val SAVED_TOKEN = "TOKEN"
@@ -20,12 +21,21 @@ class UserPreferences {
         private const val CHANCE_ID = "CHANCEID"
     }
 
-    fun saveUser(context: Context, user: Data) {
+    fun saveUser(context: Context, user: DataModel) {
         val preferences = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
         preferences.edit {
             putString(USER, user.toJson())
             putBoolean(IS_LOGGED_IN, true)
             apply()
+        }
+    }
+
+    fun saveRole(context: Context,roleModel: RoleModel) {
+        val preferences = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
+        preferences.edit {
+            putString(ROLE, roleModel.toJson())
+            apply()
+
         }
     }
 
@@ -35,10 +45,16 @@ class UserPreferences {
         preferences.edit().clear().commit()
     }
 
-    fun getUser(context: Context): Data? {
+    fun getUser(context: Context): DataModel? {
         val userStr = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
             .getString(USER, null)
         return userStr?.fromJson()
+    }
+
+    fun getRole(context: Context):RoleModel?{
+        val roleStr = context.getSharedPreferences(PREFERENCE_NAME,Context.MODE_PRIVATE)
+            .getString(ROLE,null)
+        return roleStr?.fromJson()
     }
 
 

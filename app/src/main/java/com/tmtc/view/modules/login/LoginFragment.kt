@@ -33,10 +33,11 @@ class LoginFragment : BaseFragment() {
         login_btn.setOnClickListener {
             if (validation()) {
                 viewModel.login(et_phone.text.toString(), et_pass.text.toString(),token)
+
+
             }
         }
-
-
+       //Log.d("roole",UserPreferences.instance.getRole(context!!)!!.roleDesc)
         et_phone.onTextChanged { _, _, _, _ -> til_phone.clearErrorMessage() }
         et_pass.onTextChanged { _, _, _, _ -> til_pass.clearErrorMessage() }
         avi.smoothToShow()
@@ -83,11 +84,13 @@ class LoginFragment : BaseFragment() {
 
             when (state) {
                 is NetworkState.Success -> {
+                    Log.d("roole",state.data!!.data!!.tblRoleMaster.roleId.toString())
                     if (state.data!!.message.contains("Invalid PhoneNo or Password."))
                     {
                         onError(state.data.message)
                     }else{
                         UserPreferences.instance.saveUser(context!!,state.data.data!!)
+                        UserPreferences.instance.saveRole(context!!,state.data.data.tblRoleMaster)
                         getFragmentManager()!!.popBackStack();
                         Toast.makeText(context,state.data.message, Toast.LENGTH_LONG).show()
                     }

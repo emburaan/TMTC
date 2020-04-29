@@ -1,6 +1,6 @@
 package com.tmtc.datasource.auth1
 
-data class Data(
+data class DataModel(
     val createdBy: Int,
     val createdOn: Long,
     val currAddress: String,
@@ -14,5 +14,6 @@ data class Data(
     val phoneNo: String,
     val role: Int,
     val userId: Int,
+    val tblRoleMaster:RoleModel,
     val userName: String
 )
