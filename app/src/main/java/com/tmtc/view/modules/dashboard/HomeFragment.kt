@@ -15,6 +15,7 @@ import com.tmtc.datasource.model.ItemDashboardImage
 import com.tmtc.utilities.FragmentHelper
 import com.tmtc.view.adapter.DashboardContentAdapter
 import com.tmtc.view.adapter.ImageAdapter
+import com.tmtc.view.modules.birthdaywedding.BirthdayWedding
 import com.tmtc.view.modules.vicar.VicarsFragment
 import com.tmtc.view.modules.login.LoginFragment
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -74,6 +75,8 @@ class HomeFragment : BaseFragment(),OnItemClickListener {
         when (getContent()[index].name){
             "President \n" +
                     "Old Vicars"->FragmentHelper.addFragmentSlideRightEnterToExit(VicarsFragment(),activity!!,R.id.container,"President")
+
+            "BirthDays/\n Wedding "->FragmentHelper.addFragmentSlideRightEnterToExit(BirthdayWedding(),activity!!,R.id.container,"BirthDay")
         }
 
     }
